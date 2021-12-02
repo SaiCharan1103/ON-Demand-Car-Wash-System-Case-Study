@@ -30,7 +30,7 @@ public class OrderController {
 	// Creating/Adding Order
 	@PostMapping("/addorder")
 	public String saveOrder(@RequestBody Order order) {
-		orderService.addOrder(order);
+		orderService.addOrder((CaseStudy.OrderService.model.Order) order);
 		return "Order is Placed with Washer and will be Proceesed soon " + order;
 	}
 
