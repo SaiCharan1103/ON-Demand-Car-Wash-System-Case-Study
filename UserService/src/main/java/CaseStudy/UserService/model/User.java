@@ -6,78 +6,65 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 public class User {
 	@Id
-	private int UserId;
-	private String UserName;
-	private String UserPhone;
-	private String UserEmail;
-	private String UserAddress;
-	private String UserPassword;
-	//Constructor
+	private int userId;
+	private String userName;
+	private String userPhone;
+	private String userEmail;
+	private String userAddress;
+	private String userPassword;
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
 	public User(int userId, String userName, String userPhone, String userEmail, String userAddress,
 			String userPassword) {
-		UserId = userId;
-		UserName = userName;
-		UserPhone = userPhone;
-		UserEmail = userEmail;
-		UserAddress = userAddress;
-		UserPassword = userPassword;
+		this.userId = userId;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.userEmail = userEmail;
+		this.userAddress = userAddress;
+		this.userPassword = userPassword;
 	}
-	//user method with no args
 	public User() {
 		
 	}
-    //Getters and Setters
-	public int getUserId() {
-		return UserId;
-	}
-
-	public void setUserId(int userId) {
-		UserId = userId;
-	}
-
-	public String getUserName() {
-		return UserName;
-	}
-
-	public void setUserName(String userName) {
-		UserName = userName;
-	}
-
-	public String getUserPhone() {
-		return UserPhone;
-	}
-
-	public void setUserPhone(String userPhone) {
-		UserPhone = userPhone;
-	}
-
-	public String getUserEmail() {
-		return UserEmail;
-	}
-
-	public void setUserEmail(String userEmail) {
-		UserEmail = userEmail;
-	}
-
-	public String getUserAddress() {
-		return UserAddress;
-	}
-
-	public void setUserAddress(String userAddress) {
-		UserAddress = userAddress;
-	}
-
-	public String getUserPassword() {
-		return UserPassword;
-	}
-
-	public void setUserPassword(String userPassword) {
-		UserPassword = userPassword;
-	}
-	//To String
 	@Override
 	public String toString() {
-		return "User [UserId=" + UserId + ", UserName=" + UserName + ", UserPhone=" + UserPhone + ", UserEmail="
-				+ UserEmail + ", UserAddress=" + UserAddress + ", UserPassword=" + UserPassword + "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", userPhone=" + userPhone + ", userEmail="
+				+ userEmail + ", userAddress=" + userAddress + ", userPassword=" + userPassword + "]";
 	}
+	
+	
 }

@@ -17,15 +17,19 @@ import CaseStudy.WasherService.Exception.ApiRequestException;
 import CaseStudy.WasherService.Repository.WasherRepository;
 import CaseStudy.WasherService.Service.WasherService;
 import CaseStudy.WasherService.model.washer;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 @RequestMapping("/washer")
 public class washerController {
+	private static final String WasherService = "Washer-Service";
 	@Autowired
 	private WasherService washerService;
 	
 	@Autowired
-	private WasherRepository washerRepository;
+	private WasherRepository washerRepository;	
+	
+	@CircuitBreaker(name=WasherService,fallbackMethod="userFallback")
 	
 	//Creating/Adding Washer
 	@PostMapping("/addwasher")
@@ -78,6 +82,9 @@ public class washerController {
 			{
 				throw new ApiRequestException("CAN NOT DELETE AS WASHER NOT FOUND WITH THIS ID ::");
 			}
+		}
 
+		public ResponseEntity<String> userFallback(Exception e){
+			return new ResponseEntity<String>("order list is busy",HttpStatus.OK);
 		}
 }

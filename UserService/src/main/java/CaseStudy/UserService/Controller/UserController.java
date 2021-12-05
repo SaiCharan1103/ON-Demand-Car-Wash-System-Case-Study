@@ -17,15 +17,20 @@ import CaseStudy.UserService.Exception.ApiRequestException;
 import CaseStudy.UserService.Repository.UserRepository;
 import CaseStudy.UserService.Service.UserService;
 import CaseStudy.UserService.model.User;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+	private static final String UserService = "User-Service";
+
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@CircuitBreaker(name=UserService,fallbackMethod="userFallback")
 	
 	//Creating/ADDING Customer
 	@PostMapping("/adduser")
@@ -83,4 +88,8 @@ public class UserController {
 		}
 
 	}
+	public ResponseEntity<String> userFallback(Exception e){
+		return new ResponseEntity<String>("order list is busy",HttpStatus.OK);
+	}
+	
 }
