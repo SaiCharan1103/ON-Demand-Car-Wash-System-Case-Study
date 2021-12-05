@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://sai-charan:saic460@cluster0.gdn7t.mongodb.net/MainCheck
+  application:
+    name: ADMIN-SERVICE

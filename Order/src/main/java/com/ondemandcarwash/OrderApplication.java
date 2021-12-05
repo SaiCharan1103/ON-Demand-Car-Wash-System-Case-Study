@@ -1,8 +1,7 @@
-package CaseStudy.PaymentsService;
+package com.ondemandcarwash;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -11,18 +10,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableEurekaClient
 @EnableSwagger2
-public class PaymentsServiceApplication {
+public class OrderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentsServiceApplication.class, args);
+		SpringApplication.run(OrderApplication.class, args);
 	}
-	 @Bean
+	@Bean
 	  public Docket produceApi(){
 		    return new Docket(DocumentationType.SWAGGER_2)
 		    .select()
-		    .apis(RequestHandlerSelectors.basePackage("CaseStudy.PaymentsService"))
+		    .apis(RequestHandlerSelectors.basePackage("com.ondemandcarwash"))
 		    .build();	
 	}
 }

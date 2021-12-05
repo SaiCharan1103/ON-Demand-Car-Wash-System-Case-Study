@@ -1,0 +1,10 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://sai-charan:saic460@cluster0.gdn7t.mongodb.net/Order
+      
+  application:
+    name: ORDER-SERVICE
